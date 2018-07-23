@@ -1,9 +1,15 @@
 package operations;
 
+import java.io.File;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class UIOperation extends AbsClass{
 	
@@ -24,6 +30,32 @@ public class UIOperation extends AbsClass{
 			driver.findElement(this.getObject(p, ObjectName, ObjectType)).click();
 			break;
 			
+		case "GETTEXT":
+			String text=driver.findElement(this.getObject(p, ObjectName, ObjectType)).getText();
+			System.out.println("Text is : "+text);
+			break;
+		case "GETTYPEDTEXT":
+			String typedText=driver.findElement(this.getObject(p, ObjectName, ObjectType)).getAttribute("value");
+			System.out.println("Typed Text is: "+typedText);
+			
+		case "GETTITLE":
+			driver.get(p.getProperty(data));
+			String GetTitle=driver.getTitle();
+			System.out.println("Title is" +GetTitle);
+			break;
+		case"ACTIONS":
+			WebElement SM=driver.findElement(this.getObject(p, ObjectName, ObjectType));
+			Actions act=new Actions(driver);
+			act.moveToElement(SM).build().perform();
+			break;
+		case"GETPAGESOURCE":
+			driver.get(p.getProperty(data));
+			String PS=driver.getPageSource();
+			break;
+		case "SCREENSHOT":
+			File f=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(f, new File(System.getProperty("user.dir")+"\\"+"CaptureShot\\Screenshot1.png"));
+			break;
 		case "CLOSE":
 			driver.close();
 			break;	

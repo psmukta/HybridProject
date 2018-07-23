@@ -5,8 +5,7 @@
     <classes>
       <class name="testCases.HybridTestCases">
         <methods>
-          <include name="ApplicationUnderTest"/>
-          <include name="teardown"/>
+          <include name="ApplicationUnderTest" invocation-numbers="2"/>
           <include name="SetUp"/>
         </methods>
       </class> <!-- testCases.HybridTestCases -->
