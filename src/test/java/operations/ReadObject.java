@@ -11,7 +11,7 @@ public class ReadObject {
 	
 	public Properties getObjectRepository() throws IOException {
 		
-		File f=new File(System.getProperty("user.dir")+"\\src\\test\\java\\objects\\Object1.properties");
+		File f=new File(System.getProperty("user.dir")+"\\src\\test\\java\\objects\\Object3.properties");
 		FileInputStream fis=new FileInputStream(f);
 		p.load(fis);
 		return p;
